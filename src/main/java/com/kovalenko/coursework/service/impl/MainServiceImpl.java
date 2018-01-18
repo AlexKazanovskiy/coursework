@@ -1,5 +1,6 @@
 package com.kovalenko.coursework.service.impl;
 
+import com.kovalenko.coursework.model.Corpus;
 import com.kovalenko.coursework.service.MainService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,6 +25,10 @@ public class MainServiceImpl implements MainService {
             map.put(s, map.get(s) + 1);
         });
 
+        Corpus corpus = new Corpus();
+        corpus.addWords(strings);
+        corpus.calculateFrequency();
+
         return map;
     }
 
@@ -40,7 +45,7 @@ public class MainServiceImpl implements MainService {
             String line;
             while ((line = reader.readLine()) != null) {
                 line = line.toLowerCase();
-                words.addAll(Arrays.asList(line.split("[,;:.~!-?\\s]+")));
+                words.addAll(Arrays.asList(line.split("[,;\":.~!-?\\s]+")));
             }
 
             return words;
