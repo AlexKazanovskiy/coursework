@@ -1,11 +1,11 @@
 package com.kovalenko.coursework.service;
 
-import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Map;
+import com.kovalenko.coursework.model.Corpus;
+
+import java.io.InputStream;
 
 public interface MainService {
 
-    Map<String, Integer> generateStat(MultipartFile file);
-
+    Corpus generateStat(InputStream file);
 }
